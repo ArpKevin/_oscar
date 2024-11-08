@@ -1,0 +1,13 @@
+﻿<Window x:Class="_oscar.CategoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_oscar"
+        mc:Ignorable="d"
+        Title="Kategóriák" Height="200" Width="300">
+    <StackPanel Margin="10">
+        <TextBox x:Name="categoryTextbox" Text="Add meg a kategória nevét" Foreground="Gray" GotFocus="kategoriaTextbox_GotFocus" LostFocus="kategoriaTextbox_LostFocus"/>
+        <Button Content="Kategória hozzáadása" Click="AddCategoryButton_Click" Margin="0,10,0,0" />
+    </StackPanel>
+</Window>

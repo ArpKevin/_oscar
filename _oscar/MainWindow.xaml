@@ -5,15 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_oscar"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="Auto" Width="800">
+    <StackPanel>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        
-        <Grid Grid.Column="0">
+
+        <Grid Grid.Column="0" Height="450">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -44,18 +45,18 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.Column="0" Grid.Row="0" Content="Címe" Margin="0,0,0,10"/>
-                <TextBox Grid.Column="1" Grid.Row="0" Margin="0,0,0,10"/>
+                <TextBox x:Name="cimTextbox" Grid.Column="1" Grid.Row="0" Margin="0,0,0,10"/>
 
                 <Label Grid.Column="0" Grid.Row="1" Content="Év" Margin="0,0,0,10"/>
-                <TextBox Grid.Column="1" Grid.Row="1" Margin="0,0,0,10"/>
+                <TextBox x:Name="evTextbox" Grid.Column="1" Grid.Row="1" Margin="0,0,0,10"/>
 
                 <Label Grid.Column="0" Grid.Row="2" Content="Jelöltek száma" Margin="0,0,0,10"/>
-                <TextBox Grid.Column="1" Grid.Row="2" Margin="0,0,0,10"/>
+                <TextBox x:Name="jeloltekszamaTextbox" Grid.Column="1" Grid.Row="2" Margin="0,0,0,10"/>
 
                 <Label Grid.Column="0" Grid.Row="3" Content="Díjak száma" Margin="0,0,0,10"/>
-                <TextBox Grid.Column="1" Grid.Row="3" Margin="0,0,0,10"/>
+                <TextBox x:Name="dijakszamaTextbox" Grid.Column="1" Grid.Row="3" Margin="0,0,0,10"/>
 
-                <Button Grid.ColumnSpan="2" Grid.Row="4" Content="Új film felvétele" Height="Auto" Margin="0,10,0,0"/>
+                <Button x:Name="ujfilmfelveteleButton" Grid.ColumnSpan="2" Grid.Row="4" Content="Új film felvétele" Height="Auto" Margin="0,10,0,0" Click="UjfilmfelveteleButton_Click"/>
             </Grid>
             <Grid Grid.Row="1" Margin="0,20,0,0">
                 <Grid.ColumnDefinitions>
@@ -63,8 +64,8 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Column="0">Film címe</Label>
-                <Button Grid.Column="1" Content="Legtöbb díjat kapta"></Button>
+                <Label x:Name="filmcimeLabel" Grid.Column="0">Film címe</Label>
+                <Button x:Name="legtobbdijatkaptaButton" Grid.Column="1" Content="Legtöbb díjat kapta" Click="legtobbdijatkaptaButton_Click"></Button>
             </Grid>
             <Grid Grid.Row="2" Margin="0,20,0,0">
                 <Grid.ColumnDefinitions>
@@ -72,24 +73,28 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <TextBox Grid.Column="0" Text="Keresett film" Foreground="Gray"></TextBox>
-                <Button Grid.Column="1" Content="Keres"></Button>
+                <TextBox x:Name="keresettfilmTextbox" Grid.Column="0" Text="Keresett film" Foreground="Gray" GotFocus="keresettfilmTextbox_GotFocus" LostFocus="keresettfilmTextbox_LostFocus"></TextBox>
+                <Button x:Name="keresButton" Grid.Column="1" Content="Keres" Click="keresButton_Click"></Button>
             </Grid>
             <Grid Grid.Row="3" Margin="0,20,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Content="Találat kiírása" Foreground="Gray"></Label>
+                <Label x:Name="talalatKiirasaTextbox" Grid.Column="0" Content="Találat kiírása" Foreground="Gray"></Label>
             </Grid>
         </Grid>
 
         <Grid Grid.Column="2">
             <StackPanel Orientation="Vertical">
-                <TextBox Text="Keresett szó" Foreground="Gray"></TextBox>
-                <ListBox Height="350"></ListBox>
-                <Button Content="Listázz"></Button>
+                <TextBox x:Name="keresettszoTextbox" Text="Keresett szó" Foreground="Gray"
+         GotFocus="keresettszoTextbox_GotFocus" LostFocus="keresettszoTextbox_LostFocus"/>
+                <ListBox x:Name="listazListbox" Height="350"></ListBox>
+                <Button x:Name="listazbutton" Content="Listázz" Click="listazbutton_Click"></Button>
             </StackPanel>
         </Grid>
     </Grid>
+        <ComboBox x:Name="categoryComboBox" Width="200" Margin="10" Text="Válassz kategóriát" />
+        <Button Content="Kategória hozzáadása" Click="OpenCategoryWindow" Margin="10" />
+    </StackPanel>
 </Window>
