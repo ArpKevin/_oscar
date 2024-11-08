@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -14,11 +15,20 @@ namespace _oscar
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    ///
     public partial class MainWindow : Window
     {
+        internal List<Oscar> oscars = new();
         public MainWindow()
         {
             InitializeComponent();
+
+            using StreamReader sr = new(@"..\..\..\src\oscar.csv");
+            _ = sr.ReadLine();
+
+            while (!sr.EndOfStream) oscars.Add(new Oscar(sr.ReadLine()));
+
+            oscarListBox.ItemsSource = oscars;
         }
     }
 }
